@@ -10,7 +10,7 @@
 # See /LICENSE for more information.
 #
 
-name: OpenWrt DW22d Builder
+name: OpenWrt Builder
 
 on:
   repository_dispatch:
