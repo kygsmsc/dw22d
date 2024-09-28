@@ -10,7 +10,7 @@
 # See /LICENSE for more information.
 #
 
-name: OpenWrt DW22D Builder
+name: OpenWrt DW22D 定制
 
 on:
   repository_dispatch:
