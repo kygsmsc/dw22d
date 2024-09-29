@@ -10,7 +10,7 @@
 # See /LICENSE for more information.
 #
 
-name: OpenWrt DW22D 全自动定制
+name: OpenWrt DW22D LEDE全自动定制
 
 on:
   repository_dispatch:
