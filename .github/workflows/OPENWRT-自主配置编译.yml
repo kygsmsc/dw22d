@@ -24,23 +24,18 @@ env:
   REPO_URL: https://github.com/kygsmsc/lede2
   REPO_BRANCH: master
   FEEDS_CONF: feeds.conf.default
-  CONFIG_FILE: .config
+  CONFIG_FILE: config/DW22D.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
-  UPLOAD_COWTRANSFER: false
-  UPLOAD_WETRANSFER: true
   UPLOAD_RELEASE: true
   TZ: Asia/Shanghai
 
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
 
-    permissions:
-      contents: write
-    
     steps:
     - name: 检查项目分支
       uses: actions/checkout@main
@@ -90,9 +85,9 @@ jobs:
     - name: SSH连接操作
       uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
-      #env:
-       # TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-       # TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
     #- name: SSH连接操作
       #uses: P3TERX/debugger-action@master
       #if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
