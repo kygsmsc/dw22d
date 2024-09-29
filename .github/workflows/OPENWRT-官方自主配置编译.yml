@@ -17,7 +17,7 @@ on:
   workflow_dispatch:
     inputs:
       ssh:
-        description: 'SSH connection to Actions'
+        description: 'SSH连接操作'
         required: false
         default: 'true'
 env:
