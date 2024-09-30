@@ -5,7 +5,7 @@
 # Description: Build OpenWrt
 #============================================================================================
 
-name: OpenWrt-配置生成工具
+name: 1.OpenWrt-配置生成工具
 
 on:
   repository_dispatch:
