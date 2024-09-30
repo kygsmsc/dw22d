@@ -13,7 +13,7 @@
 name: OpenWrt—官方自主配置编译
 
 on:
-  repository_dispatch:
+  
   workflow_dispatch:
     inputs:
       SSH_ACTION:
