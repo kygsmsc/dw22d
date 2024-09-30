@@ -1,0 +1,129 @@
+#============================================================================================
+# https://github.com/P3TERX/Actions-OpenWrt
+# https://github.com/ophub/amlogic-s9xxx-openwrt
+# https://github.com/3wlh/Actions-OpenWrt
+# Description: Build OpenWrt
+#============================================================================================
+
+name: OpenWrt-配置生成工具
+
+on:
+  repository_dispatch:
+  workflow_dispatch:
+    inputs:
+      source_branch:
+        description: "请选择OPENWRT的版本"
+        required: false
+        default: "openwrt-main"
+        type: choice
+        options:
+          - openwrt-main
+          - lede-master
+          - immortalwrt-master
+          
+      ssh:
+        description: "SSH定制固件配置"
+        required: false
+        default: true
+        type: boolean
+     
+
+env:
+  TZ: Asia/Shanghai
+  UPLOAD_CONFIG: true
+
+  
+  
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@main
+
+    - name: Initialization environment
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        docker rmi $(docker images -q) 2>/dev/null
+        [[ -n "${AGENT_TOOLSDIRECTORY}" ]] && sudo rm -rf "${AGENT_TOOLSDIRECTORY}"
+        sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL 2>/dev/null
+        # sudo docker image prune --all --force
+        sudo -E apt-get -qq -y update
+        sudo -E apt-get -qq -y install cmake curl wget git
+        sudo -E apt-get -qq -y autoremove --purge
+        sudo -E apt-get -qq -y clean
+        sudo rm -rf ~/{.cargo,.dotnet,.rustup}
+        sudo timedatectl set-timezone "${TZ}"
+        sudo mkdir -p /builder
+        sudo chown $USER:$GROUPS /builder
+
+    - name: Clone source code [ ${{ inputs.source_branch }} ]
+      working-directory: /builder
+      run: |
+        df -hT $PWD
+        # Set up compilation source code
+        if [[ "${{ inputs.source_branch }}" == *"openwrt"* ]]; then
+            REPO_URL="https://github.com/openwrt/openwrt"
+            REPO_BRANCH="main"
+            TAGS_NAME="OpenWrt"
+        elif [[ "${{ inputs.source_branch }}" == *"lede"* ]]; then
+            REPO_URL="https://github.com/kygsmsc/lede2"
+            REPO_BRANCH="master"
+            TAGS_NAME="LEDE"
+        elif [[ "${{ inputs.source_branch }}" == *"immortalwrt"* ]]; then
+            REPO_URL="https://github.com/immortalwrt/immortalwrt"
+            REPO_BRANCH="master"
+            TAGS_NAME="Immortalwrt"
+        else
+            echo "Unknown source code repository."
+              exit 1
+          fi
+        # Clone source code
+        git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
+        ln -sf /builder/openwrt $GITHUB_WORKSPACE/openwrt
+        echo "FILE_NAME=${TAGS_NAME}_" >> $GITHUB_ENV
+        echo "REPO_URL=${REPO_URL}" >> ${GITHUB_OUTPUT}
+        echo "TAGS_NAME=${TAGS_NAME}" >> ${GITHUB_OUTPUT}
+        echo "status=success" >> ${GITHUB_OUTPUT}
+
+    - name: Update feeds
+      run: cd openwrt && ./scripts/feeds update -a
+
+    - name: Install feeds
+      run: cd openwrt && ./scripts/feeds install -a
+
+    - name: SSH connection to Actions
+      if: (inputs.ssh == true) || contains(github.event.action, 'ssh')
+      uses: rdp-studio/ssh2actions@main
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+
+    - name: Download Config
+      id: config
+      run: |
+        cd openwrt
+        make defconfig
+        echo -e "$(cat .config)"
+        echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
+      
+    - name: Organize Files
+      id: files
+      run: |
+        cd openwrt
+        [[ -d "Output" ]] || mkdir Output
+        cp -f .config Output/config
+        echo "status=success" >> $GITHUB_OUTPUT
+
+    - name: Check space usage
+      if: (!cancelled())
+      run: df -hT
+
+    - name: Upload Config directory
+      uses: actions/upload-artifact@main
+      if: env.UPLOAD_CONFIG == 'true' && !cancelled()
+      with:
+        name: ${{ env.FILE_NAME }}Config${{ env.FILE_DATE }}
+        path: openwrt/Output
