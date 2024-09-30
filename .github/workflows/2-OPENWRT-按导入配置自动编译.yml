@@ -10,7 +10,7 @@
 # See /LICENSE for more information.
 #
 
-name: OpenWrt-自主配置编译
+name: 2-OpenWrt-按导入配置自动编译
 
 on:
   repository_dispatch:
