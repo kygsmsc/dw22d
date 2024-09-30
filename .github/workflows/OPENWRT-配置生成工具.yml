@@ -39,10 +39,10 @@ jobs:
     runs-on: ubuntu-22.04
 
     steps:
-    - name: Checkout
+    - name: 查看
       uses: actions/checkout@main
 
-    - name: Initialization environment
+    - name: 初始化环境
       env:
         DEBIAN_FRONTEND: noninteractive
       run: |
@@ -59,7 +59,7 @@ jobs:
         sudo mkdir -p /builder
         sudo chown $USER:$GROUPS /builder
 
-    - name: Clone source code [ ${{ inputs.source_branch }} ]
+    - name: 克隆源代码 [ ${{ inputs.source_branch }} ]
       working-directory: /builder
       run: |
         df -hT $PWD
@@ -88,20 +88,20 @@ jobs:
         echo "TAGS_NAME=${TAGS_NAME}" >> ${GITHUB_OUTPUT}
         echo "status=success" >> ${GITHUB_OUTPUT}
 
-    - name: Update feeds
+    - name: 更新 feeds
       run: cd openwrt && ./scripts/feeds update -a
 
-    - name: Install feeds
+    - name: 安装 feeds
       run: cd openwrt && ./scripts/feeds install -a
 
-    - name: SSH connection to Actions
+    - name: SSH连接到Actions
       if: (inputs.ssh == true) || contains(github.event.action, 'ssh')
       uses: rdp-studio/ssh2actions@main
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
 
-    - name: Download Config
+    - name: 下载配置
       id: config
       run: |
         cd openwrt
@@ -109,7 +109,7 @@ jobs:
         echo -e "$(cat .config)"
         echo "FILE_DATE=_$(date +"%Y%m%d%H%M")" >> $GITHUB_ENV
       
-    - name: Organize Files
+    - name: 整理文件
       id: files
       run: |
         cd openwrt
@@ -117,11 +117,11 @@ jobs:
         cp -f .config Output/config
         echo "status=success" >> $GITHUB_OUTPUT
 
-    - name: Check space usage
+    - name: 检查空间使用情况
       if: (!cancelled())
       run: df -hT
 
-    - name: Upload Config directory
+    - name: 上传配置目录
       uses: actions/upload-artifact@main
       if: env.UPLOAD_CONFIG == 'true' && !cancelled()
       with:
