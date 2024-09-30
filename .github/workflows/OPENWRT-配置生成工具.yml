@@ -87,13 +87,27 @@ jobs:
         echo "REPO_URL=${REPO_URL}" >> ${GITHUB_OUTPUT}
         echo "TAGS_NAME=${TAGS_NAME}" >> ${GITHUB_OUTPUT}
         echo "status=success" >> ${GITHUB_OUTPUT}
+        
+    - name: 加载自定义提要
+      run: |
+        [ -e $FEEDS_CONF ] && mv $FEEDS_CONF openwrt/feeds.conf.default
+        chmod +x $DIY_P1_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P1_SH
 
     - name: 更新 feeds
       run: cd openwrt && ./scripts/feeds update -a
 
     - name: 安装 feeds
       run: cd openwrt && ./scripts/feeds install -a
-
+      
+    - name: 加载自定义配置
+      run: |
+        [ -e files ] && mv files openwrt/files
+        chmod +x $DIY_P2_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P2_SH
+        
     - name: SSH连接到Actions
       if: (inputs.ssh == true) || contains(github.event.action, 'ssh')
       uses: rdp-studio/ssh2actions@main
