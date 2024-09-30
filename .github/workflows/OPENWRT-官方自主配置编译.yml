@@ -10,20 +10,29 @@
 # See /LICENSE for more information.
 #
 
-name: OpenWrt—官方自主配置编译
+name: OpenWrt-官方自主配置编译
 
 on:
-  
+  repository_dispatch:
   workflow_dispatch:
     inputs:
-      SSH_ACTION:
+      source_branch:
+        description: "请选择OPENWRT的版本"
+        required: false
+        default: "openwrt-main"
+        type: choice
+        options:
+          - openwrt-main
+          - lede-master
+          - immortalwrt-master
+          
+      ssh:
         description: 'SSH远程配置固件'
         required: true
         default: 'true'
         type: boolean'
+        
 env:
-  REPO_URL: https://git.openwrt.org/openwrt/openwrt.git
-  REPO_BRANCH: master
   FEEDS_CONF: FEEDS-CONFIG/feeds.conf.default
   CONFIG_FILE: .config
   DIY_P1_SH: diy-part1.sh
@@ -59,8 +68,27 @@ jobs:
       working-directory: /workdir
       run: |
         df -hT $PWD
+         if [[ "${{ inputs.source_branch }}" == *"openwrt"* ]]; then
+            REPO_URL="https://github.com/openwrt/openwrt"
+            REPO_BRANCH="main"
+            TAGS_NAME="official"
+        elif [[ "${{ inputs.source_branch }}" == *"lede"* ]]; then
+            REPO_URL="https://github.com/kygsmsc/lede2"
+            REPO_BRANCH="master"
+            TAGS_NAME="lede"
+        elif [[ "${{ inputs.source_branch }}" == *"immortalwrt"* ]]; then
+            REPO_URL="https://github.com/immortalwrt/immortalwrt"
+            REPO_BRANCH="master"
+            TAGS_NAME="immortalwrt"
+        else
+            echo "Unknown source code repository."
+              exit 1
+          fi
         git clone $REPO_URL -b $REPO_BRANCH openwrt
         ln -sf /workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        echo "REPO_URL=${REPO_URL}" >> ${GITHUB_OUTPUT}
+        echo "TAGS_NAME=${TAGS_NAME}" >> ${GITHUB_OUTPUT}
+        echo "status=success" >> ${GITHUB_OUTPUT}
 
     - name: 加载自定义提要
       run: |
@@ -83,9 +111,12 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         
-    - name: SSH远程连接（make menuconfig）
-      if: env.SSH_ACTION == 'true'
-      uses: danshui-git/debugger-action@main
+    - name: SSH连接到Actions
+      uses: P3TERX/ssh2actions@main
+      if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
+      env:
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
     #- name: SSH连接操作
       #uses: P3TERX/debugger-action@master
       #if: env.SSH_ACTIONS == 'true' || contains(github.event.action, 'ssh')
