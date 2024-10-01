@@ -12,15 +12,51 @@ on:
   workflow_dispatch:
     inputs:
       source_branch:
-        description: "请选择OPENWRT的版本"
+        description: "请选择OPENWRT的分支"
         required: false
-        default: "openwrt-main"
+        default: "openwrt"
         type: choice
         options:
-          - openwrt-main
-          - lede-master
-          - immortalwrt-master
+          - openwrt
+          - lede
+          - immortalwrt
           
+      BRANCH:
+        description: "请选择OPENWRT的分支版本"
+        required: false
+        default: "master"
+        type: choice
+        options:
+          - master
+          - 23.05.5
+          - 23.05.4
+          - 23.05.3
+          - 23.05.2
+          - 23.05.1
+          - 23.05.0
+          - 22.03.7
+          - 22.03.6
+          - 22.03.5
+          - 22.03.4
+          - 22.03.3
+          - 22.03.2
+          - 22.03.1
+          - 22.03.0
+          - 21.02.7
+          - 21.02.6
+          - 21.02.5
+          - 21.02.4
+          - 21.02.3
+          - 21.02.2
+          - 21.02.1
+          - 21.02.0
+          - 19.07.10
+          - 19.07.9
+          - 19.07.8
+          - 19.07.7
+          - 19.07.6
+          - 19.07.5
+          - 19.07.4          
       ssh:
         description: "SSH定制固件配置"
         required: false
@@ -72,15 +108,15 @@ jobs:
         # Set up compilation source code
         if [[ "${{ inputs.source_branch }}" == *"openwrt"* ]]; then
             REPO_URL="https://github.com/openwrt/openwrt"
-            REPO_BRANCH="main"
+            REPO_BRANCH="${{ inputs.BRANCH }}"
             TAGS_NAME="OpenWrt"
         elif [[ "${{ inputs.source_branch }}" == *"lede"* ]]; then
             REPO_URL="https://github.com/kygsmsc/lede2"
-            REPO_BRANCH="master"
+            REPO_BRANCH="${{ inputs.BRANCH }}"
             TAGS_NAME="LEDE"
         elif [[ "${{ inputs.source_branch }}" == *"immortalwrt"* ]]; then
             REPO_URL="https://github.com/immortalwrt/immortalwrt"
-            REPO_BRANCH="master"
+            REPO_BRANCH="${{ inputs.BRANCH }}"
             TAGS_NAME="Immortalwrt"
         else
             echo "Unknown source code repository."
