@@ -14,12 +14,12 @@ on:
       source_branch:
         description: "请选择OPENWRT的分支"
         required: false
-        default: "openwrt"
+        default: "openwrt-main"
         type: choice
         options:
-          - openwrt
-          - lede
-          - immortalwrt
+          - openwrt-main
+          - lede-master
+          - immortalwrt-master
           
       BRANCH:
         description: "请选择OPENWRT的分支版本"
