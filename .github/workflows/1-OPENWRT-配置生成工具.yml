@@ -108,15 +108,15 @@ jobs:
         # Set up compilation source code
         if [[ "${{ inputs.source_branch }}" == *"openwrt"* ]]; then
             REPO_URL="https://github.com/openwrt/openwrt"
-            REPO_BRANCH="22.03"
+            REPO_BRANCH="main"
             TAGS_NAME="OpenWrt"
         elif [[ "${{ inputs.source_branch }}" == *"lede"* ]]; then
             REPO_URL="https://github.com/kygsmsc/lede2"
-            REPO_BRANCH="${{ inputs.BRANCH }}"
+            REPO_BRANCH="master"
             TAGS_NAME="LEDE"
         elif [[ "${{ inputs.source_branch }}" == *"immortalwrt"* ]]; then
             REPO_URL="https://github.com/immortalwrt/immortalwrt"
-            REPO_BRANCH="${{ inputs.BRANCH }}"
+            REPO_BRANCH="master"
             TAGS_NAME="Immortalwrt"
         else
             echo "Unknown source code repository."
