@@ -25,6 +25,7 @@ on:
           - openwrt-main
           - lede-master
           - immortalwrt-master
+          - Lienol-master
           
       #ssh:
         #description: 'SSH远程配置固件'
@@ -101,8 +102,12 @@ jobs:
             REPO_URL="https://github.com/immortalwrt/immortalwrt"
             REPO_BRANCH="master"
             TAGS_NAME="immortalwrt"
+        elif [[ "${{ inputs.source_branch }}" == *"Lienol"* ]]; then
+            REPO_URL="https://github.com/Lienol/openwrt"
+            REPO_BRANCH="22.03"
+            TAGS_NAME="Lienol"
         else
-            echo "Unknown source code repository."
+            echo "未知的源代码存储库."
               exit 1
           fi
         git clone $REPO_URL -b $REPO_BRANCH openwrt
