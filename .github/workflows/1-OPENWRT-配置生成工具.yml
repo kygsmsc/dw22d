@@ -156,11 +156,6 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
         
-    - name: 进入OPENWRT配置菜单
-      run: |
-        cd openwrt
-        make menuconfig
-        
     - name: SSH连接 (cd openwrt && make menuconfig )
       if: (inputs.ssh == true) || contains(github.event.action, 'ssh')
       uses: rdp-studio/ssh2actions@main
