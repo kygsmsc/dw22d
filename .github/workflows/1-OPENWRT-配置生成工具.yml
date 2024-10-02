@@ -124,7 +124,7 @@ jobs:
             REPO_BRANCH="22.03"
             TAGS_NAME="Lienol"
         else
-            echo "Unknown source code repository."
+            echo "未知的源代码存储库."
               exit 1
           fi
         # Clone source code
