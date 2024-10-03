@@ -86,7 +86,7 @@ jobs:
           sudo chown -R runner.runner /builder
           df -Th $PWD
 
-    - name: 克隆源代码
+    - name: 克隆源代码 [ ${{ inputs.source_branch }} ]
       working-directory: /workdir
       run: |
         df -hT $PWD
