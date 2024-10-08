@@ -123,6 +123,12 @@ jobs:
 
     - name: 安装 feeds
       run: cd openwrt && ./scripts/feeds install -a
+
+    - name: 再次更新 feeds
+      run: cd openwrt && ./scripts/feeds update -i -f
+
+    - name: 再次安装 feeds
+      run: cd openwrt && ./scripts/feeds install -a -f
       
     - name: 加载自定义配置
       run: |
