@@ -10,13 +10,16 @@
 # Description: OpenWrt DIY script part 2 (After Update feeds)
 #
 
-# Modify default IP
+# 修改默认 IP
 #sed -i 's/192.168.1.1/192.168.10.254/g' package/base-files/files/bin/config_generate
 
-# Modify default theme
+# 修改默认主题
 #sed -i 's/luci-theme-bootstrap/luci-theme-argon/g' feeds/luci/collections/luci/Makefile
 
-# Modify hostname
+# 修改主机名
+#sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
+
+# 修改默认语言
 #sed -i 's/OpenWrt/P3TERX-Router/g' package/base-files/files/bin/config_generate
 
 # 添加luci-theme-argon
