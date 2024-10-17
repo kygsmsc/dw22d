@@ -53,6 +53,35 @@ sed -i 's/ssid=OpenWrt/ssid=XXKDB-R4A/g' package/kernel/mac80211/files/lib/wifi/
 # 修改默认wifi密码key为Xiaomi_R4A
 #sed -i 's/key=password/key=Xiaomi_R4A/g' package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
+# 修改插件名字（修改名字后不知道会不会对插件功能有影响，自己多测试）
+# sed -i 's/"BaiduPCS Web"/"百度网盘"/g' package/lean/luci-app-baidupcs-web/luasrc/controller/baidupcs-web.lua
+# sed -i 's/cbi("qbittorrent"),_("qBittorrent")/cbi("qbittorrent"),_("BT下载")/g' package/lean/luci-app-qbittorrent/luasrc/controller/qbittorrent.lua
+# sed -i 's/"aMule设置"/"电驴下载"/g' package/lean/luci-app-amule/po/zh-cn/amule.po
+# sed -i 's/"网络存储"/"存储"/g' package/lean/luci-app-amule/po/zh-cn/amule.po
+# sed -i 's/"网络存储"/"存储"/g' package/lean/luci-app-vsftpd/po/zh-cn/vsftpd.po
+# sed -i 's/"Turbo ACC 网络加速"/"网络加速"/g' package/lean/luci-app-flowoffload/po/zh-cn/flowoffload.po
+# sed -i 's/"Turbo ACC 网络加速"/"网络加速"/g' package/lean/luci-app-sfe/po/zh-cn/sfe.po
+# sed -i 's/"实时流量监测"/"流量"/g' package/lean/luci-app-wrtbwmon/po/zh-cn/wrtbwmon.po
+# sed -i 's/"KMS 服务器"/"KMS激活"/g' package/lean/luci-app-vlmcsd/po/zh-cn/vlmcsd.zh-cn.po
+# sed -i 's/"TTYD 终端"/"命令窗"/g' package/lean/luci-app-ttyd/po/zh-cn/terminal.po
+# sed -i 's/"USB 打印服务器"/"打印服务"/g' package/lean/luci-app-usb-printer/po/zh-cn/usb-printer.po
+# sed -i 's/"网络存储"/"存储"/g' package/lean/luci-app-usb-printer/po/zh-cn/usb-printer.po
+# sed -i 's/"Web 管理"/"Web管理"/g' package/lean/luci-app-webadmin/po/zh-cn/webadmin.po
+# sed -i 's/"管理权"/"改密码"/g' feeds/luci/modules/luci-base/po/zh-cn/base.po
+# sed -i 's/"带宽监控"/"监视"/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
+
+sed -i 's/"aMule设置"/"电驴下载"/g' `grep "aMule设置" -rl ./`
+sed -i 's/"网络存储"/"NAS"/g' `grep "网络存储" -rl ./`
+sed -i 's/"Turbo ACC 网络加速"/"网络加速"/g' `grep "Turbo ACC 网络加速" -rl ./`
+sed -i 's/"实时流量监测"/"流量"/g' `grep "实时流量监测" -rl ./`
+# sed -i 's/"KMS 服务器"/"KMS激活"/g' `grep "KMS 服务器" -rl ./`
+# sed -i 's/"TTYD 终端"/"命令窗"/g' `grep "TTYD 终端" -rl ./`
+sed -i 's/"USB 打印服务器"/"打印服务"/g' `grep "USB 打印服务器" -rl ./`
+# sed -i 's/"Web 管理"/"Web"/g' `grep "Web 管理" -rl ./`
+sed -i 's/"管理权"/"密码设置"/g' `grep "管理权" -rl ./`
+sed -i 's/"带宽监控"/"监控"/g' `grep "带宽监控" -rl ./`
+# sed -i 's/"Argon 主题设置"/"Argon设置"/g' `grep "Argon 主题设置" -rl ./`
+
 # 添加luci-theme-argon
 #(git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon && {
 #    [ -d package/luci-theme-argon ] && echo "CONFIG_PACKAGE_luci-theme-argon=y" >> .config 
