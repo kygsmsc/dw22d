@@ -20,7 +20,7 @@ VERSION_TIME=$(date "+%Y%m%d")          # 自动时间更新时版本号: 202003
 lan_ip='192.168.2.1'                                                        # Lan Ip地址
 utc_name='Asia\/Shanghai'                                                   # 时区
 delete_bootstrap=true                                                       # 是否删除默认主题 true 、false
-default_theme='argon_mc1'                                                   # 默认主题 结合主题文件夹名字
+default_theme='argon'                                                       # 默认主题 结合主题文件夹名字
 theme_argon='https://github.com/sypopo/luci-theme-argon-mc.git'             # 主题地址
 openClash_url='https://github.com/vernesong/OpenClash.git'                  # OpenClash包地址
 adguardhome_url='https://github.com/rufengsuixing/luci-app-adguardhome.git' # adguardhome 包地址
@@ -49,8 +49,8 @@ sed -i 's@.*CYXluq4wUazHjmCDBCqXF*@#&@g' package/lean/default-settings/files/zzz
 # echo "修改wifi名称"
 # sed -i "s/OpenWrt/$wifi_name/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
-echo "修改Wif密码"
-sed -i "s/1234567890/$WIFI_PASSWORD/g" $DEFAULT_PATH
+# echo "修改Wif密码"
+# sed -i "s/1234567890/$WIFI_PASSWORD/g" $DEFAULT_PATH
 
 echo "更新版本号时间"
 sed -i "s/FIRMWARE_BUILDS_REV=[0-9]*/FIRMWARE_BUILDS_REV="$VERSION_namez$VERSION_TIME"/g" ./versions.inc
@@ -73,8 +73,13 @@ if [ $delete_bootstrap ]; then
 fi
 
 echo '添加主题argon'
-git clone $theme_argon package/lean/luci-theme-argon-mc
-echo 'CONFIG_PACKAGE_luci-theme-argon-mc=y' >>.config
+(git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon && {
+    [ -d package/luci-theme-argon ] && echo "CONFIG_PACKAGE_luci-theme-argon=y" >> .config 
+}) 
+# 添加主题argon-设置
+(git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config && {
+    [ -d package/luci-app-argon-config ] && echo "CONFIG_PACKAGE_luci-app-argon-config=y" >> .config 
+})
 
 # echo '添加OpenClash'
 # git clone $openClash_url package/lean/luci-app-openclash
@@ -242,11 +247,4 @@ echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >>.config   # zerotier ~1.3M
 
 #--------------------------------------------------------------------------------------------------------------
 
-# 添加luci-theme-argon
-#(git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon && {
-#    [ -d package/luci-theme-argon ] && echo "CONFIG_PACKAGE_luci-theme-argon=y" >> .config 
-#}) 
-# 添加luci-app-argon-config
-#(git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config && {
-#    [ -d package/luci-app-argon-config ] && echo "CONFIG_PACKAGE_luci-app-argon-config=y" >> .config 
-#})
+
