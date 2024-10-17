@@ -76,27 +76,27 @@ echo '添加主题argon'
 git clone $theme_argon package/lean/luci-theme-argon-mc
 echo 'CONFIG_PACKAGE_luci-theme-argon-mc=y' >>.config
 
-echo '添加OpenClash'
-git clone $openClash_url package/lean/luci-app-openclash
+# echo '添加OpenClash'
+# git clone $openClash_url package/lean/luci-app-openclash
 
 #  OpenClash
-echo 'CONFIG_PACKAGE_luci-app-openclash=y' >>.config
-echo 'CONFIG_PACKAGE_luci-i18n-openclash-zh-cn=y' >>.config
+echo 'CONFIG_PACKAGE_luci-app-openclash=n' >>.config
+echo 'CONFIG_PACKAGE_luci-i18n-openclash-zh-cn=n' >>.config
 
 echo '添加Lienol包'
 git clone $lienol_url package/Lienol
 
 echo '添加Passwall'
-echo 'CONFIG_PACKAGE_luci-app-passwall=y' >>.config
-echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks=y' >>.config
-echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan=y' >>.config
-echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_simple-obfs=y' >>.config
-echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_v2ray-plugin=y' >>.config
-echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook=y' >>.config
-echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_kcptun=y' >>.config
-echo 'CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=y' >>.config
+echo 'CONFIG_PACKAGE_luci-app-passwall=n' >>.config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks=n' >>.config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan=n' >>.config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_simple-obfs=n' >>.config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_v2ray-plugin=n' >>.config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook=n' >>.config
+echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_kcptun=n' >>.config
+echo 'CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=n' >>.config
 
-echo '添加filebrowser'
+echo '添加文件浏览器'
 echo 'CONFIG_PACKAGE_luci-app-filebrowser=y' >>.config
 echo 'CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y' >>.config
 
@@ -111,12 +111,12 @@ echo 'CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y' >>.config
 # echo 'CONFIG_PACKAGE_luci-app-vssr=y' >> .config
 # echo 'CONFIG_PACKAGE_luci-i18n-vssr-zh-cn=y'  >> .config
 
-echo '添加OpenAppFilter过滤器'
-git clone $filter_url package/OpenAppFilter
-echo 'CONFIG_PACKAGE_luci-app-oaf=y' >>.config
-echo 'CONFIG_PACKAGE_kmod-oaf=y' >>.config
-echo 'CONFIG_PACKAGE_appfilter=y' >>.config
-echo 'CONFIG_PACKAGE_luci-i18n-oaf-zh-cn=y' >>.config
+# echo '添加OpenAppFilter过滤器'
+# git clone $filter_url package/OpenAppFilter
+# echo 'CONFIG_PACKAGE_luci-app-oaf=y' >>.config
+# echo 'CONFIG_PACKAGE_kmod-oaf=y' >>.config
+# echo 'CONFIG_PACKAGE_appfilter=y' >>.config
+# echo 'CONFIG_PACKAGE_luci-i18n-oaf-zh-cn=y' >>.config
 
 # echo '添加Leo-Jo-My的Hello World,并且使用默认包配置'
 # git clone $vssr_plus_rely package/lean/luci-vssr-plus-rely
@@ -164,8 +164,8 @@ sed -i 's/"带宽监控"/"监控"/g' `grep "带宽监控" -rl ./`
 set -u
 
 # 是否超频(多选一）
-echo "CONFIG_FIRMWARE_CPU_900MHZ=n" >>.config
-echo "CONFIG_FIRMWARE_CPU_600MHZ=n" >>.config
+# echo "CONFIG_FIRMWARE_CPU_900MHZ=n" >>.config
+# echo "CONFIG_FIRMWARE_CPU_600MHZ=n" >>.config
 
 # 科学
 echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >>.config # SS plus+
@@ -181,7 +181,7 @@ echo "CONFIG_FIRMWARE_INCLUDE_CADDYBIN=n" >>.config # 集成 caddu执行文件�
 # 广告
 echo "CONFIG_FIRMWARE_INCLUDE_KOOLPROXY=n" >>.config   # KP 广告过滤
 echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=n" >>.config # ADGUARD 广告拦截
-echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=y" >>.config      # adbyby plus+
+echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=n" >>.config      # adbyby plus+
 
 # 代理
 echo "CONFIG_FIRMWARE_INCLUDE_KUMASOCKS=y" >>.config # KUMA
