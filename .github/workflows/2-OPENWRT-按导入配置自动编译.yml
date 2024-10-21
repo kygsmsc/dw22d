@@ -65,8 +65,8 @@ jobs:
         sudo -E apt-get -qq clean
         sudo rm -rf ~/{.cargo,.dotnet,.rustup}
         sudo timedatectl set-timezone "$TZ"
-        sudo mkdir -p /workdir
-        sudo chown $USER:$GROUPS /workdir
+        # sudo mkdir -p /workdir
+        # sudo chown $USER:$GROUPS /workdir
         
     - name: 创建模拟物理磁盘
       id: disk
