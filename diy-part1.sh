@@ -40,8 +40,10 @@
 # rm -rf {*passwall*,*bypass*,*homeproxy*,*mihomo*}
 # git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
-sed -i "/helloworld/d" "feeds.conf.default"
-echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf.default"
+# sed -i "/helloworld/d" "feeds.conf.default"
+# echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf.default"
+
+sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
 
 
 
