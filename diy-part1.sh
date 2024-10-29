@@ -43,7 +43,9 @@
 # sed -i "/helloworld/d" "feeds.conf.default"
 # echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf.default"
 
+# 使用方式：
 sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
 
-
+# 对于强迫症的同学（有报错信息、或Lean源码编译出错的情况），请尝试删除冲突的插件
+# rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb}
 
