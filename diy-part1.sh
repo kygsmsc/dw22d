@@ -31,17 +31,22 @@
 # sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 # sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
-sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
-./scripts/feeds update -a && rm -rf feeds/luci/applications/luci-app-mosdns
-rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
-rm -rf feeds/packages/utils/v2dat
-rm -rf feeds/packages/lang/golang
-rm -rf {*passwall*,*bypass*,*homeproxy*,*mihomo*}
-git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+# sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+# sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
+# ./scripts/feeds update -a && rm -rf feeds/luci/applications/luci-app-mosdns
+# rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
+# rm -rf feeds/packages/utils/v2dat
+# rm -rf feeds/packages/lang/golang
+# rm -rf {*passwall*,*bypass*,*homeproxy*,*mihomo*}
+# git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 # sed -i "/helloworld/d" "feeds.conf.default"
 # echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf.default"
+echo "src-git passwall_packages https://github.com/xiaorouji/openwrt-passwall-packages.git;main" >> "feeds.conf.default"
+echo "src-git passwall2 https://github.com/xiaorouji/openwrt-passwall2.git;main" >> "feeds.conf.default"
+echo "src-git helloworld https://github.com/fw876/helloworld.git;master" >> "feeds.conf.default"
+
+./scripts/feeds clean
 
 # 使用方式：
 # sed -i '$a src-git smpackage https://github.com/kenzok8/small-package' feeds.conf.default
