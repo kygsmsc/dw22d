@@ -85,21 +85,20 @@ echo '添加主题argon'
 # git clone $openClash_url package/lean/luci-app-openclash
 
 #  OpenClash
-echo 'CONFIG_PACKAGE_luci-app-openclash=n' >>.config
-echo 'CONFIG_PACKAGE_luci-i18n-openclash-zh-cn=n' >>.config
+# echo 'CONFIG_PACKAGE_luci-app-openclash=n' >>.config
+# echo 'CONFIG_PACKAGE_luci-i18n-openclash-zh-cn=n' >>.config
 
 echo '添加Lienol包'
 git clone $lienol_url package/Lienol
 
-echo '添加Passwall'
-echo 'CONFIG_PACKAGE_luci-app-passwall=n' >>.config
-echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Shadowsocks=n' >>.config
-echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan=n' >>.config
-echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_simple-obfs=n' >>.config
-echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_v2ray-plugin=n' >>.config
-echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook=n' >>.config
-echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_kcptun=n' >>.config
-echo 'CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=n' >>.config
+# echo '添加Passwall'
+# echo 'CONFIG_PACKAGE_luci-app-passwall=n' >>.config
+# echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan=n' >>.config
+# echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_simple-obfs=n' >>.config
+# echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_v2ray-plugin=n' >>.config
+# echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Brook=n' >>.config
+# echo 'CONFIG_PACKAGE_luci-app-passwall_INCLUDE_kcptun=n' >>.config
+# echo 'CONFIG_PACKAGE_luci-i18n-passwall-zh-cn=n' >>.config
 
 echo '添加文件浏览器'
 echo 'CONFIG_PACKAGE_luci-app-filebrowser=y' >>.config
@@ -173,15 +172,15 @@ set -u
 # echo "CONFIG_FIRMWARE_CPU_600MHZ=n" >>.config
 
 # 科学
-echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >>.config # SS plus+
-echo "CONFIG_FIRMWARE_INCLUDE_SSSERVER=n" >>.config    # SS server
-echo "CONFIG_FIRMWARE_INCLUDE_SSOBFS=y" >>.config      # simple-obfs混淆插件,SS 开了才可以打开
-echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=n" >>.config  # 集成v2ray执行文件（3.8M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
-echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=n" >>.config # 集成trojan执行文件(1.1M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
+# echo "CONFIG_FIRMWARE_INCLUDE_SHADOWSOCKS=y" >>.config # SS plus+
+# echo "CONFIG_FIRMWARE_INCLUDE_SSSERVER=n" >>.config    # SS server
+# echo "CONFIG_FIRMWARE_INCLUDE_SSOBFS=y" >>.config      # simple-obfs混淆插件,SS 开了才可以打开
+# echo "CONFIG_FIRMWARE_INCLUDE_V2RAY=n" >>.config  # 集成v2ray执行文件（3.8M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
+# echo "CONFIG_FIRMWARE_INCLUDE_TROJAN=n" >>.config # 集成trojan执行文件(1.1M左右)，如果不集成，会从网上下载下来执行，不影响正常使用
 
 # 文件
-echo "CONFIG_FIRMWARE_INCLUDE_CADDY=y" >>.config    # 在线文件管理服务
-echo "CONFIG_FIRMWARE_INCLUDE_CADDYBIN=n" >>.config # 集成 caddu执行文件，此文件有13M,请注意固件大小。如果不集成，会从网上下载下来执行，不影响正常使用
+# echo "CONFIG_FIRMWARE_INCLUDE_CADDY=y" >>.config    # 在线文件管理服务
+# echo "CONFIG_FIRMWARE_INCLUDE_CADDYBIN=n" >>.config # 集成 caddu执行文件，此文件有13M,请注意固件大小。如果不集成，会从网上下载下来执行，不影响正常使用
 
 # 广告
 echo "CONFIG_FIRMWARE_INCLUDE_KOOLPROXY=n" >>.config   # KP 广告过滤
