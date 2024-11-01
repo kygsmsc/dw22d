@@ -51,7 +51,7 @@ echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf
 # 对于强迫症的同学（有报错信息、或Lean源码编译出错的情况），请尝试删除冲突的插件
 # rm -rf feeds/smpackage/{base-files,dnsmasq,firewall*,fullconenat,libnftnl,nftables,ppp,opkg,ucl,upx,vsftpd*,miniupnpd-iptables,wireless-regdb}
 
-git tag
-git branch
-git checkout v23.05.4 #在tag里有版本号，填入你要的版本号，我选我现在最新的v23.05.4
+# git tag
+# git branch
+# git checkout v23.05.4 #在tag里有版本号，填入你要的版本号，我选我现在最新的v23.05.4
 
