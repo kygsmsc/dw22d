@@ -53,5 +53,5 @@ echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf
 
 git tag
 git branch
-git checkout v23.05.2 #在tag里有版本号，填入你要的版本号，我选我现在最新的v23.05.2
+git checkout v23.05.4 #在tag里有版本号，填入你要的版本号，我选我现在最新的v23.05.4
 
