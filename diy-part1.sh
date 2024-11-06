@@ -24,7 +24,7 @@
 #git clone https://github.com/small-5/luci-app-adblock-plus package/lean/luci-app-adblock-plus  #adblock plus+ 去广告
 
 # Add a feed source
-rm -rf tmp
+# rm -rf tmp
 # sed -i '$a src-git MrH723 https://github.com/MrH723/openwrt-packages' feeds.conf.default
 # echo 'src-git helloworld https://github.com/fw876/helloworld' >>feeds.conf.default
 # echo 'src-git passwall https://github.com/xiaorouji/openwrt-passwall' >>feeds.conf.default
@@ -33,16 +33,16 @@ rm -rf tmp
 # sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 # sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
-echo 'src-git fichenx https://github.com/fichenx/openwrt-package' >>feeds.conf.default
+# echo 'src-git fichenx https://github.com/fichenx/openwrt-package' >>feeds.conf.default
 
-# sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-# sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
-# ./scripts/feeds update -a && rm -rf feeds/luci/applications/luci-app-mosdns
-# rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
-# rm -rf feeds/packages/utils/v2dat
-# rm -rf feeds/packages/lang/golang
-# rm -rf {*passwall*,*bypass*,*homeproxy*,*mihomo*}
-# git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
+sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
+./scripts/feeds update -a && rm -rf feeds/luci/applications/luci-app-mosdns
+rm -rf feeds/packages/net/{alist,adguardhome,mosdns,xray*,v2ray*,v2ray*,sing*,smartdns}
+rm -rf feeds/packages/utils/v2dat
+rm -rf feeds/packages/lang/golang
+rm -rf {*passwall*,*bypass*,*homeproxy*,*mihomo*}
+git clone https://github.com/kenzok8/golang feeds/packages/lang/golang
 
 # sed -i "/helloworld/d" "feeds.conf.default"
 # echo "src-git helloworld https://github.com/fw876/helloworld.git" >> "feeds.conf.default"
