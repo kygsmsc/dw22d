@@ -89,7 +89,7 @@ jobs:
 
     - name: 克隆源代码 [ ${{ inputs.source_branch }} ]
       id: codes
-      working-directory: /builder
+      working-directory: /mnt/workdir
       run: |
         df -hT $PWD
          if [[ "${{ inputs.source_branch }}" == *"openwrt"* ]]; then
