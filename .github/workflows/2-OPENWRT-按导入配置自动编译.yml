@@ -25,8 +25,7 @@ on:
           - openwrt-main
           - lede-master
           - immortalwrt-master
-          - Lienol-master
-          
+          - Lienol-master    
       ssh:
         description: "SSH定制固件配置"
         required: false
@@ -147,8 +146,8 @@ jobs:
         $GITHUB_WORKSPACE/$DIY_P2_SH
         
     - name: SSH连接到Actions
-       uses: P3TERX/ssh2actions@main
-       uses: P3TERX/ssh2actions@v1.0.0
+       #uses: P3TERX/ssh2actions@main
+      uses: P3TERX/ssh2actions@v1.0.0
       if: (github.event.inputs.ssh == 'true' && github.event.inputs.ssh  != 'false') || contains(github.event.action, 'ssh')
       env:
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
