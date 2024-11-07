@@ -27,11 +27,11 @@ on:
           - immortalwrt-master
           - Lienol-master
           
-      #ssh:
-        #description: 'SSH远程配置固件'
-        #required: true
-        #default: 'true'
-        #type: boolean'
+        ssh:
+        description: "SSH定制固件配置"
+        required: false
+        default: true
+        type: boolean
         
 env:
   #FEEDS_CONF: feeds/${{ inputs.source_branch }}/feeds.conf.default
