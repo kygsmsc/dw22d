@@ -104,22 +104,22 @@ jobs:
         if [[ "${{ inputs.source_branch }}" == *"openwrt"* ]]; then
             REPO_URL="https://github.com/openwrt/openwrt"
             #REPO_BRANCH="main"
-            REPO_BRANCH="${{ inputs.source_branch }}"
+            REPO_BRANCH="${{ inputs.BRANCH: }}"
             TAGS_NAME="OpenWrt"
         elif [[ "${{ inputs.source_branch }}" == *"lede"* ]]; then
             REPO_URL="https://github.com/kygsmsc/lede2"
             #REPO_BRANCH="master"
-            REPO_BRANCH="${{ inputs.source_branch }}"
+            REPO_BRANCH="${{ inputs.BRANCH: }}"
             TAGS_NAME="LEDE"
         elif [[ "${{ inputs.source_branch }}" == *"immortalwrt"* ]]; then
             REPO_URL="https://github.com/immortalwrt/immortalwrt"
             #REPO_BRANCH="master"
-            REPO_BRANCH="${{ inputs.source_branch }}"
+            REPO_BRANCH="${{ inputs.BRANCH: }}"
             TAGS_NAME="Immortalwrt"
         elif [[ "${{ inputs.source_branch }}" == *"Lienol"* ]]; then
             REPO_URL="https://github.com/Lienol/openwrt"
             #REPO_BRANCH="22.03"
-            REPO_BRANCH="${{ inputs.source_branch }}"
+            REPO_BRANCH="${{ inputs.BRANCH: }}"
             TAGS_NAME="Lienol"
         else
             echo "未知的源代码存储库."
