@@ -96,7 +96,7 @@ jobs:
        # sudo mkdir -p /builder
        # sudo chown $USER:$GROUPS /builder
 
-    - name: 克隆源代码 [ ${{ inputs.source_branch }} ]
+    - name: 克隆源代码 [ ${{ inputs.source_branch }} ][ ${{ inputs.BRANCH }} ]
       working-directory: /mnt/workdir
       run: |
         df -hT $PWD
