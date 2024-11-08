@@ -72,7 +72,8 @@ jobs:
         sudo -E apt -y purge azure-cli* docker* ghc* zulu* llvm* firefox google* dotnet* powershell* openjdk* mysql* php* mongodb* dotnet* snap* aspnetcore*
         [ -n "$AGENT_TOOLSDIRECTORY" ] && sudo rm -rf "$AGENT_TOOLSDIRECTORY"
         sudo -E apt update
-        sudo -E apt -y install $(curl -fsSL https://is.gd/depend_ubuntu_2204_openwrt)
+        sudo -E apt -qy install $(curl -fsSL https://raw.githubusercontent.com/Plutonium141/openwrt-depends-ubuntu/main/ubuntu)
+        # sudo -E apt -y install $(curl -fsSL https://is.gd/depend_ubuntu_2204_openwrt)
         sudo -E apt -y autoremove --purge
         sudo -E systemctl daemon-reload
         sudo -E apt clean && sudo -E apt autoclean
