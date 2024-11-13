@@ -72,55 +72,59 @@ jobs:
         sudo -E apt -y purge azure-cli* docker* ghc* zulu* llvm* firefox google* dotnet* powershell* openjdk* mysql* php* mongodb* dotnet* snap* aspnetcore*
         [ -n "$AGENT_TOOLSDIRECTORY" ] && sudo rm -rf "$AGENT_TOOLSDIRECTORY"
         sudo -E apt update
-        sudo -E apt -qy install $(curl -fsSL https://raw.githubusercontent.com/Plutonium141/openwrt-depends-ubuntu/main/ubuntu)
+        # sudo -E apt -qy install $(curl -fsSL https://raw.githubusercontent.com/Plutonium141/openwrt-depends-ubuntu/main/ubuntu)
         # sudo -E apt -y install $(curl -fsSL https://is.gd/depend_ubuntu_2204_openwrt)
+        sudo -E apt -y install $(curl -fsSL https://is.gd/depends_ubuntu_2204)
         sudo -E apt -y autoremove --purge
         sudo -E systemctl daemon-reload
         sudo -E apt clean && sudo -E apt autoclean
         sudo timedatectl set-timezone "$TZ"
-        sudo mkdir -p /mnt/workdir
-        sudo chown $USER:$GROUPS /mnt/workdir
-
+        sudo mkdir -p /builder
+        sudo chown $USER:$GROUPS /builder
         
-       # docker rmi $(docker images -q) 2>/dev/null
-       # [[ -n "${AGENT_TOOLSDIRECTORY}" ]] && sudo rm -rf "${AGENT_TOOLSDIRECTORY}"
-       # sudo rm -rf /etc/apt/sources.list.d/* /usr/share/dotnet /usr/local/lib/android /opt/ghc /opt/hostedtoolcache/CodeQL 2>/dev/null
-        # sudo docker image prune --all --force
-       # sudo -E apt-get -qq -y update
-       # sudo -E apt-get -qq -y purge azure-cli ghc* zulu* llvm* firefox google* dotnet* powershell openjdk* mongodb* moby* || true
-        # sudo -E apt-get -qq -y install $(cat make-openwrt-env)
-       # sudo -E apt -y install $(curl -fsSL https://is.gd/depend_ubuntu2204_openwrt)
-       # sudo -E apt-get -qq -y autoremove --purge
-       # sudo -E apt-get -qq -y clean
-       # sudo rm -rf ~/{.cargo,.dotnet,.rustup}
-       # sudo timedatectl set-timezone "${TZ}"
-       # sudo mkdir -p /builder
-       # sudo chown $USER:$GROUPS /builder
+    - name: 创建模拟物理磁盘
+      id: disk
+      run: |
+          mnt_size=$(expr $(df -h /mnt | tail -1 | awk '{print $4}' | sed 's/[[:alpha:]]//g' | sed 's/\..*//') - 1)
+          root_size=$(expr $(df -h / | tail -1 | awk '{print $4}' | sed 's/[[:alpha:]]//g' | sed 's/\..*//') - 4)
+          sudo truncate -s "${mnt_size}"G /mnt/mnt.img
+          sudo truncate -s "${root_size}"G /root.img
+          sudo losetup /dev/loop6 /mnt/mnt.img
+          sudo losetup /dev/loop7 /root.img
+          sudo pvcreate /dev/loop6
+          sudo pvcreate /dev/loop7
+          sudo vgcreate github /dev/loop6 /dev/loop7
+          sudo lvcreate -n runner -l 100%FREE github
+          sudo mkfs.xfs /dev/github/runner
+          sudo mkdir -p /builder
+          sudo mount /dev/github/runner /builder
+          sudo chown -R runner.runner /builder
+          df -Th $PWD
 
     - name: 克隆源代码 [ ${{ inputs.source_branch }} ][ ${{ inputs.BRANCH }} ]
-      working-directory: /mnt/workdir
+      working-directory: /builder
       run: |
         df -hT $PWD
         # Set up compilation source code
         if [[ "${{ inputs.source_branch }}" == *"openwrt"* ]]; then
             REPO_URL="https://github.com/openwrt/openwrt"
-            #REPO_BRANCH="main"
-            REPO_BRANCH="${{ inputs.BRANCH }}"
+            REPO_BRANCH="main"
+            #REPO_BRANCH="${{ inputs.BRANCH }}"
             TAGS_NAME="OpenWrt"
         elif [[ "${{ inputs.source_branch }}" == *"lede"* ]]; then
-            REPO_URL="https://github.com/kygsmsc/lede2"
-            #REPO_BRANCH="master"
-            REPO_BRANCH="${{ inputs.BRANCH }}"
+            REPO_URL="https://github.com/coolsnowwolf/lede"
+            REPO_BRANCH="master"
+            #REPO_BRANCH="${{ inputs.BRANCH }}"
             TAGS_NAME="LEDE"
         elif [[ "${{ inputs.source_branch }}" == *"immortalwrt"* ]]; then
             REPO_URL="https://github.com/immortalwrt/immortalwrt.git"
-            #REPO_BRANCH="master"
-            REPO_BRANCH="${{ inputs.BRANCH }}"
+            REPO_BRANCH="master"
+            #REPO_BRANCH="${{ inputs.BRANCH }}"
             TAGS_NAME="Immortalwrt"
         elif [[ "${{ inputs.source_branch }}" == *"Lienol"* ]]; then
             REPO_URL="https://github.com/Lienol/openwrt"
-            #REPO_BRANCH="22.03"
-            REPO_BRANCH="${{ inputs.BRANCH }}"
+            REPO_BRANCH="22.03"
+            #REPO_BRANCH="${{ inputs.BRANCH }}"
             TAGS_NAME="Lienol"
         else
             echo "未知的源代码存储库."
@@ -129,7 +133,7 @@ jobs:
         # Clone source code
         # git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
         git clone ${REPO_URL} -b ${REPO_BRANCH} openwrt
-        ln -sf /mnt/workdir/openwrt $GITHUB_WORKSPACE/openwrt
+        ln -sf /builder/openwrt $GITHUB_WORKSPACE/openwrt
         echo "FILE_NAME=${TAGS_NAME}_" >> $GITHUB_ENV
         echo "REPO_URL=${REPO_URL}" >> ${GITHUB_OUTPUT}
         echo "TAGS_NAME=${TAGS_NAME}" >> ${GITHUB_OUTPUT}
