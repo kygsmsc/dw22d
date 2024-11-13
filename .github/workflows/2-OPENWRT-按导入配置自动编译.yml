@@ -121,7 +121,7 @@ jobs:
       run: |
         cd openwrt
         git fetch --tags
-        git checkout v21.02.0-rc4
+        git checkout v23.05.0-rc4
         
     - name: SSH连接到Actions
        #uses: P3TERX/ssh2actions@main
