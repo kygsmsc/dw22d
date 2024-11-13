@@ -116,6 +116,10 @@ jobs:
         echo "REPO_URL=${REPO_URL}" >> ${GITHUB_OUTPUT}
         echo "TAGS_NAME=${TAGS_NAME}" >> ${GITHUB_OUTPUT}
         echo "status=success" >> ${GITHUB_OUTPUT}
+        
+    - name: 切换OPENWRT的分支
+      run: |
+        cd openwrt
         git fetch --tags
         git checkout v21.02.0-rc4
         
