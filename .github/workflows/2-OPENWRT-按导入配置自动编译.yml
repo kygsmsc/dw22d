@@ -114,7 +114,8 @@ jobs:
             echo "未知的源代码存储库."
               exit 1
           fi
-        git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
+        #git clone -q --single-branch --depth=1 --branch=${REPO_BRANCH} ${REPO_URL} openwrt
+        git clone ${REPO_URL} -b ${REPO_BRANCH} openwrt
         ln -sf /builder/openwrt $GITHUB_WORKSPACE/openwrt
         echo "REPO_URL=${REPO_URL}" >> ${GITHUB_OUTPUT}
         echo "TAGS_NAME=${TAGS_NAME}" >> ${GITHUB_OUTPUT}
