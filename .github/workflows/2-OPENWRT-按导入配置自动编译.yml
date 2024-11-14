@@ -94,17 +94,14 @@ jobs:
          if [[ "${{ inputs.source_branch }}" == *"openwrt"* ]]; then
             REPO_URL="https://github.com/openwrt/openwrt"
             #REPO_BRANCH="main"
-            REPO_BRANCH="22.03.7"
             TAGS_NAME="official"
         elif [[ "${{ inputs.source_branch }}" == *"lede"* ]]; then
             REPO_URL="https://github.com/coolsnowwolf/lede"
             #REPO_BRANCH="master"
-            REPO_BRANCH="20221001"
             TAGS_NAME="lede"
         elif [[ "${{ inputs.source_branch }}" == *"immortalwrt"* ]]; then
             REPO_URL="https://github.com/immortalwrt/immortalwrt"
             #REPO_BRANCH="master"
-            REPO_BRANCH="21.02.7"
             TAGS_NAME="immortalwrt"
         elif [[ "${{ inputs.source_branch }}" == *"Lienol"* ]]; then
             REPO_URL="https://github.com/Lienol/openwrt"
