@@ -38,6 +38,7 @@ env:
   CONFIG_FILE: config/${{ inputs.source_branch }}/.config
   DIY_P1_SH: diy-part1.sh
   DIY_P2_SH: diy-part2.sh
+  DIY_P3_SH: diy-part3.sh
   UPLOAD_BIN_DIR: false
   UPLOAD_FIRMWARE: true
   UPLOAD_RELEASE: true
@@ -120,11 +121,9 @@ jobs:
         
     - name: 切换OPENWRT的分支
       run: |
-        #cd openwrt
-        #git fetch --tags --all  # 拉取所有标签和远程分支
-        # git tag    # 你可以查看所有可用的版本
-        # git branch -a  # 查看当前使用的版本
-        #git checkout v23.05.0-rc4   # 切换到指定的版本
+        chmod +x $DIY_P3_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P3_SH
         
     - name: SSH连接到Actions
       uses: P3TERX/ssh2actions@main
