@@ -140,12 +140,11 @@ jobs:
         echo "TAGS_NAME=${TAGS_NAME}" >> ${GITHUB_OUTPUT}
         echo "status=success" >> ${GITHUB_OUTPUT}
 
-    - name: SSH连接 (cd openwrt && make menuconfig )
-      if: (inputs.ssh == true) || contains(github.event.action, 'ssh')
-      uses: rdp-studio/ssh2actions@main
-      env:
-        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+    - name: 切换OPENWRT的分支
+      run: |
+        chmod +x $DIY_P3_SH
+        cd openwrt
+        $GITHUB_WORKSPACE/$DIY_P3_SH
         
     - name: 加载自定义提要
       run: |
