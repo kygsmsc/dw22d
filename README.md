@@ -40,13 +40,13 @@ v22.03.0-rc1   v22.03.0-rc2   v22.03.0-rc3   v22.03.0-rc4   v22.03.0-rc5   v22.0
 v22.03.5       v22.03.6       v22.03.7       v23.05.0       v23.05.0-rc1   v23.05.0-rc2   v23.05.0-rc3          v23.05.0-rc4
 v23.05.1       v23.05.2       v23.05.3       v23.05.4       v23.05.5
 
-###LEDE:
+### LEDE:
 remotes/origin/HEAD -> origin/master
 remotes/origin/master
 
 20200408     20200416     20200915     20211107     20220401     20220505     20220716     20221001     20230609
 
-###IMMORTALWRT:
+### IMMORTALWRT:
 remotes/origin/HEAD -> origin/master
 remotes/origin/master
 remotes/origin/openwrt-18.06
@@ -58,7 +58,7 @@ remotes/origin/openwrt-24.10
 v21.02.0       v21.02.1       v21.02.2       v21.02.3   v21.02.4   v21.02.5   v21.02.6   v21.02.7   v23.05.0   v23.05.0-rc1
 v23.05.0-rc2   v23.05.0-rc3   v23.05.0-rc4   v23.05.1   v23.05.2   v23.05.3   v23.05.45
 
-###LIENOL:
+### LIENOL:
 remotes/origin/19.07
 remotes/origin/21.02
 remotes/origin/22.03
