@@ -40,8 +40,32 @@ v22.03.0-rc1   v22.03.0-rc2   v22.03.0-rc3   v22.03.0-rc4   v22.03.0-rc5   v22.0
 v22.03.5       v22.03.6       v22.03.7       v23.05.0       v23.05.0-rc1   v23.05.0-rc2   v23.05.0-rc3          v23.05.0-rc4
 v23.05.1       v23.05.2       v23.05.3       v23.05.4       v23.05.5
 
-- 创建 .config 文件并构建 OpenWrt 固件。因此，在创建仓库以构建自己的固件之前，您可以通过简单的搜索来查看其他人是否已经构建了满足您需求的固件 [search `Actions-Openwrt` in GitHub](https://github.com/search?q=Actions-openwrt).
-- 在你的仓库介绍中添加一些你构建的固件的元信息（比如固件架构和已安装的软件包），这样可以节省其他人的时间。
+###LEDE:
+remotes/origin/HEAD -> origin/master
+remotes/origin/master
+
+20200408     20200416     20200915     20211107     20220401     20220505     20220716     20221001     20230609
+
+###IMMORTALWRT:
+remotes/origin/HEAD -> origin/master
+remotes/origin/master
+remotes/origin/openwrt-18.06
+remotes/origin/openwrt-18.06-k5.4
+remotes/origin/openwrt-21.02
+remotes/origin/openwrt-23.05
+remotes/origin/openwrt-24.10
+
+v21.02.0       v21.02.1       v21.02.2       v21.02.3   v21.02.4   v21.02.5   v21.02.6   v21.02.7   v23.05.0   v23.05.0-rc1
+v23.05.0-rc2   v23.05.0-rc3   v23.05.0-rc4   v23.05.1   v23.05.2   v23.05.3   v23.05.45
+
+###LIENOL:
+remotes/origin/19.07
+remotes/origin/21.02
+remotes/origin/22.03
+remotes/origin/23.05
+remotes/origin/24.10
+remotes/origin/HEAD -> origin/24.10
+remotes/origin/main
 
 ## 感谢
 
