@@ -18,7 +18,7 @@
 - 单击 Run workflow 按钮。
 - 构建完成后，会在 Actions （操作） 页面对应执行完成的编译项目下生成ZIP的下载文件，或直接在“发布”区找到最新固件下载。
 
-## Tips
+## 技巧 
 
 - 创建 .config 文件并构建 OpenWrt 固件。因此，在创建仓库以构建自己的固件之前，您可以通过简单的搜索来查看其他人是否已经构建了满足您需求的固件 [search `Actions-Openwrt` in GitHub](https://github.com/search?q=Actions-openwrt).
 - 在你的仓库介绍中添加一些你构建的固件的元信息（比如固件架构和已安装的软件包），这样可以节省其他人的时间。
