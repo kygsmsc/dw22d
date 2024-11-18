@@ -26,20 +26,14 @@ on:
         description: "请选择OPENWRT的分支版本"
         required: false
         default: "master"
-        type: choice
-        options:
-          - master
-          - main
-          - 23.05
-          - 22.03
-          - 21.02
-          - 19.07         
+        type: Object
+        
       ssh:
         description: "SSH定制固件配置"
         required: false
         default: true
         #type: boolean
-        type: Object
+        #type: Object
      
 
 env:
