@@ -32,7 +32,7 @@ on:
         description: "SSH定制固件配置"
         required: false
         default: true
-        #type: boolean
+        type: boolean
         #type: Object
      
 
