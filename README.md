@@ -19,6 +19,26 @@
 - 构建完成后，会在 Actions （操作） 页面对应执行完成的编译项目下生成ZIP的下载文件，或直接在“发布”区找到最新固件下载。
 
 ## 技巧 
+### OPENWRT:
+remotes/origin/HEAD -> origin/main
+remotes/origin/lede-17.01
+remotes/origin/main
+remotes/origin/master
+remotes/origin/openwrt-18.06
+remotes/origin/openwrt-19.07
+remotes/origin/openwrt-21.02
+remotes/origin/openwrt-22.03
+remotes/origin/openwrt-23.05
+remotes/origin/openwrt-24.10
+
+v17.01.0   v17.01.0-rc1   v17.01.0-rc2   v17.01.1       v17.01.2       v17.01.3   v17.01.4       v17.01.5       v17.01.6   v17.01.7
+v18.06.0   v18.06.0-rc1   v18.06.0-rc2   v18.06.1       v18.06.2       v18.06.3   v18.06.4       v18.06.5       v18.06.6   v18.06.7
+v18.06.8   v18.06.9       v19.07.0       v19.07.0-rc1   v19.07.0-rc2   v19.07.1   v19.07.10      v19.07.2       v19.07.3   v19.07.4
+v19.07.5   v19.07.6       v19.07.7       v19.07.8       v19.07.9       v21.02.0   v21.02.0-rc1   v21.02.0-rc2   v21.02.0-rc3
+v21.02.0-rc4   v21.02.1   v21.02.2       v21.02.3       v21.02.4       v21.02.5   v21.02.6       v21.02.7       v22.03.0
+v22.03.0-rc1   v22.03.0-rc2   v22.03.0-rc3   v22.03.0-rc4   v22.03.0-rc5   v22.03.0-rc6   v22.03.1   v22.03.2   v22.03.3   v22.03.4
+v22.03.5       v22.03.6       v22.03.7       v23.05.0       v23.05.0-rc1   v23.05.0-rc2   v23.05.0-rc3          v23.05.0-rc4
+v23.05.1       v23.05.2       v23.05.3       v23.05.4       v23.05.5
 
 - 创建 .config 文件并构建 OpenWrt 固件。因此，在创建仓库以构建自己的固件之前，您可以通过简单的搜索来查看其他人是否已经构建了满足您需求的固件 [search `Actions-Openwrt` in GitHub](https://github.com/search?q=Actions-openwrt).
 - 在你的仓库介绍中添加一些你构建的固件的元信息（比如固件架构和已安装的软件包），这样可以节省其他人的时间。
