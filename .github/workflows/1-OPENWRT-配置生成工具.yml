@@ -137,9 +137,10 @@ jobs:
 
     - name: 切换OPENWRT的分支
       run: |
-        chmod +x $DIY_P3_SH
-        cd openwrt
-        $GITHUB_WORKSPACE/$DIY_P3_SH
+        #git fetch --tags --all  # 拉取所有标签和远程分支
+        git tag    # 你可以查看所有可用的版本
+        git branch -a  # 查看当前使用的版本
+        git checkout ${VERS}   # 切换到指定的版本
         
     - name: SSH连接 (cd openwrt && make menuconfig )
       if: (inputs.ssh == true) || contains(github.event.action, 'ssh')
