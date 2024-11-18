@@ -141,6 +141,13 @@ jobs:
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P3_SH
         
+    - name: SSH连接 (cd openwrt && make menuconfig )
+      if: (inputs.ssh == true) || contains(github.event.action, 'ssh')
+      uses: rdp-studio/ssh2actions@main
+      env:
+        TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        
     - name: 加载自定义提要
       run: |
         rm -rf tmp
