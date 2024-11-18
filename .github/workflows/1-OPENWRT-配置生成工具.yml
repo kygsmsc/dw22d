@@ -97,7 +97,7 @@ jobs:
           sudo chown -R runner.runner /builder
           df -Th $PWD
 
-    - name: 克隆源代码 [ ${{ inputs.source_branch }} ][ ${{ inputs.banben }} ]
+    - name: 克隆源代码 [ ${{ inputs.source_branch }} ][${{inputs.banben}}]
       working-directory: /builder
       run: |
         df -hT $PWD
@@ -105,22 +105,22 @@ jobs:
         if [[ "${{ inputs.source_branch }}" == *"openwrt"* ]]; then
             REPO_URL="https://github.com/openwrt/openwrt"
             REPO_BRANCH="main"
-            VERS="${{ inputs.banben }}"
+            BAN_VERS="${{inputs.banben}}"
             TAGS_NAME="OpenWrt"
         elif [[ "${{ inputs.source_branch }}" == *"lede"* ]]; then
             REPO_URL="https://github.com/coolsnowwolf/lede"
             REPO_BRANCH="master"
-            VERS="${{ inputs.banben }}"
+            BAN_VERS="${{inputs.banben}}"
             TAGS_NAME="LEDE"
         elif [[ "${{ inputs.source_branch }}" == *"immortalwrt"* ]]; then
             REPO_URL="https://github.com/immortalwrt/immortalwrt.git"
             REPO_BRANCH="master"
-            VERS="${{ inputs.banben }}"
+            BAN_VERS="${{inputs.banben}}"
             TAGS_NAME="Immortalwrt"
         elif [[ "${{ inputs.source_branch }}" == *"Lienol"* ]]; then
             REPO_URL="https://github.com/Lienol/openwrt"
             REPO_BRANCH="main"
-            VERS="${{ inputs.banben }}"
+            BAN_VERS="${{inputs.banben}}"
             TAGS_NAME="Lienol"
         else
             echo "未知的源代码存储库."
@@ -140,7 +140,7 @@ jobs:
         #git fetch --tags --all  # 拉取所有标签和远程分支
         git tag    # 你可以查看所有可用的版本
         git branch -a  # 查看当前使用的版本
-        git checkout ${VERS}   # 切换到指定的版本
+        git checkout ${BAN_VERS}   # 切换到指定的版本
         
     - name: SSH连接 (cd openwrt && make menuconfig )
       if: (inputs.ssh == true) || contains(github.event.action, 'ssh')
