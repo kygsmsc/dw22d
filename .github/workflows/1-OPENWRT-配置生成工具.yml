@@ -22,7 +22,7 @@ on:
           - immortalwrt-master
           - Lienol-master
           
-      banban:
+      banben:
         description: "请选择OPENWRT的分支版本"
         required: false
         default: "master"
