@@ -23,7 +23,7 @@
 - 创建 .config 文件并构建 OpenWrt 固件。因此，在创建仓库以构建自己的固件之前，您可以通过简单的搜索来查看其他人是否已经构建了满足您需求的固件 [search `Actions-Openwrt` in GitHub](https://github.com/search?q=Actions-openwrt).
 - 在你的仓库介绍中添加一些你构建的固件的元信息（比如固件架构和已安装的软件包），这样可以节省其他人的时间。
 
-## 学分
+## 感谢
 
 - [Microsoft Azure](https://azure.microsoft.com)
 - [GitHub Actions](https://github.com/features/actions)
