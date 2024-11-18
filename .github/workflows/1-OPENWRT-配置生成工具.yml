@@ -22,11 +22,11 @@ on:
           - immortalwrt-master
           - Lienol-master
           
-      VERS:
+      banban:
         description: "请选择OPENWRT的分支版本"
         required: false
         default: "master"
-        type: Object
+        type: text
         
       ssh:
         description: "SSH定制固件配置"
@@ -97,7 +97,7 @@ jobs:
           sudo chown -R runner.runner /builder
           df -Th $PWD
 
-    - name: 克隆源代码 [ ${{ inputs.source_branch }} ][ ${{ inputs.BRANCH }} ]
+    - name: 克隆源代码 [ ${{ inputs.source_branch }} ][ ${{ inputs.banben }} ]
       working-directory: /builder
       run: |
         df -hT $PWD
@@ -105,22 +105,22 @@ jobs:
         if [[ "${{ inputs.source_branch }}" == *"openwrt"* ]]; then
             REPO_URL="https://github.com/openwrt/openwrt"
             REPO_BRANCH="main"
-            VERS="${{ inputs.VERS }}"
+            VERS="${{ inputs.banben }}"
             TAGS_NAME="OpenWrt"
         elif [[ "${{ inputs.source_branch }}" == *"lede"* ]]; then
             REPO_URL="https://github.com/coolsnowwolf/lede"
             REPO_BRANCH="master"
-            VERS="${{ inputs.VERS }}"
+            VERS="${{ inputs.banben }}"
             TAGS_NAME="LEDE"
         elif [[ "${{ inputs.source_branch }}" == *"immortalwrt"* ]]; then
             REPO_URL="https://github.com/immortalwrt/immortalwrt.git"
             REPO_BRANCH="master"
-            VERS="${{ inputs.VERS }}"
+            VERS="${{ inputs.banben }}"
             TAGS_NAME="Immortalwrt"
         elif [[ "${{ inputs.source_branch }}" == *"Lienol"* ]]; then
             REPO_URL="https://github.com/Lienol/openwrt"
             REPO_BRANCH="main"
-            VERS="${{ inputs.VERS }}"
+            VERS="${{ inputs.banben }}"
             TAGS_NAME="Lienol"
         else
             echo "未知的源代码存储库."
