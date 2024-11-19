@@ -17,7 +17,7 @@
 - 再 Actions （操作） 页面上选择“固件自动编译”，并设置对应参数，要和“配置文件生成”时同样的参数。
 - 单击 Run workflow 按钮。
 - 构建完成后，会在 Actions （操作） 页面对应执行完成的编译项目下生成ZIP的下载文件，或直接在“发布”区找到最新固件下载。
-
+- OpenWrt云编译.config配置文件在线生成https://kygsmsc.github.io/openwrt_config/openwrt-config-tools/index.html
 ## 技巧 
 ### OPENWRT:
 remotes/origin/HEAD -> origin/main
