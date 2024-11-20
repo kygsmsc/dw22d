@@ -126,6 +126,7 @@ jobs:
         git tag    # 你可以查看所有可用的版本
         git branch -a  # 查看当前使用的版本
         git checkout ${{inputs.banben}}   # 切换到指定的版本
+        git branch -a  # 查看当前使用的版本
         
     - name: 加载自定义提要
       run: |
