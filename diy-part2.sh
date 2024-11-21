@@ -44,13 +44,13 @@ sed -i 's@.*CYXluq4wUazHjmCDBCqXF*@#&@g' package/lean/default-settings/files/zzz
 #sed -i 's/root:$1$V4UetPzk$CYXluq4wUazHjmCDBCqXF.:0:0:99999:7:::/root:你的密码/g' package/lean/default-settings/files/zzz-default-settings
 
 # echo "修改机器名称"
-# sed -i "s/OpenWrt/$device_name/g" package/base-files/files/bin/config_generate
+sed -i "s/OpenWrt/$device_name/g" package/base-files/files/bin/config_generate
 
 # echo "修改wifi名称"
-# sed -i "s/OpenWrt/$wifi_name/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
+sed -i "s/OpenWrt/$wifi_name/g" package/kernel/mac80211/files/lib/wifi/mac80211.sh
 
 # echo "修改Wif密码"
-# sed -i "s/1234567890/$WIFI_PASSWORD/g" $DEFAULT_PATH
+sed -i "s/1234567890/$WIFI_PASSWORD/g" $DEFAULT_PATH
 
 echo "更新版本号时间"
 sed -i "s/FIRMWARE_BUILDS_REV=[0-9]*/FIRMWARE_BUILDS_REV="$VERSION_namez$VERSION_TIME"/g" ./versions.inc
