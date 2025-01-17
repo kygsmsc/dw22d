@@ -25,7 +25,8 @@ on:
           - openwrt-main
           - lede-master
           - immortalwrt-master
-          - Lienol-master    
+          - Lienol-master
+          - istoreos-main
       banben:
         description: "请选择OPENWRT的分支版本"
         required: false
@@ -108,6 +109,11 @@ jobs:
             REPO_URL="https://github.com/Lienol/openwrt"
             REPO_BRANCH="main"
             TAGS_NAME="Lienol"
+        elif [[ "${{ inputs.source_branch }}" == *"istoreos"* ]]; then
+            REPO_URL="https://github.com/istoreos/istoreos"
+            REPO_BRANCH="master"
+            #BAN_VERS="${{inputs.banben}}"
+            TAGS_NAME="istoreos"
         else
             echo "未知的源代码存储库."
               exit 1
