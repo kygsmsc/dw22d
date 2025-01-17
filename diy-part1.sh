@@ -24,14 +24,14 @@
 #git clone https://github.com/small-5/luci-app-adblock-plus package/lean/luci-app-adblock-plus  #adblock plus+ 去广告
 
 # Add a feed source
-rm -rf tmp
+# rm -rf tmp
 # sed -i '$a src-git MrH723 https://github.com/MrH723/openwrt-packages' feeds.conf.default
 # sed -i '$a src-git helloworld https://github.com/fw876/helloworld' feeds.conf.default
 # sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
 # echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages' >>feeds.conf.default
 # echo 'src-git small https://github.com/kenzok8/small' >>feeds.conf.default
-sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
-sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
+#sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
+#sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
 # echo 'src-git fichenx https://github.com/fichenx/openwrt-package' >>feeds.conf.default
 
