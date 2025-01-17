@@ -21,6 +21,7 @@ on:
           - lede-master
           - immortalwrt-master
           - Lienol-master
+          - istoreos-master
           
       banben:
         description: "请选择OPENWRT的分支版本"
@@ -121,6 +122,11 @@ jobs:
             REPO_BRANCH="main"
             #BAN_VERS="${{inputs.banben}}"
             TAGS_NAME="Lienol"
+        elif [[ "${{ inputs.source_branch }}" == *"istoreos"* ]]; then
+            REPO_URL="https://github.com/istoreos/istoreos"
+            REPO_BRANCH="main"
+            #BAN_VERS="${{inputs.banben}}"
+            TAGS_NAME="istoreos"
         else
             echo "未知的源代码存储库."
               exit 1
