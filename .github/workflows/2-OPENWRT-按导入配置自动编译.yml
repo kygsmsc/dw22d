@@ -26,7 +26,7 @@ on:
           - lede-master
           - immortalwrt-master
           - Lienol-master
-          - istoreos-main
+          - istoreos-master
       banben:
         description: "请选择OPENWRT的分支版本"
         required: false
