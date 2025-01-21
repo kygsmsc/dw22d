@@ -67,6 +67,11 @@ remotes/origin/24.10
 remotes/origin/HEAD -> origin/24.10
 remotes/origin/main
 
+### iStoreOS
+remotes/origin/HEAD -> origin/istoreos-22.03    /istoreos-21.02    /istoreos-21.02.2    /istoreos-22.03    /istoreos-22.03-dev    /istoreos-22.03-fw4-bcm-fullcone    /istoreos-22.03.4    /istoreos-22.03.5    /istoreos-22.03.6    /istoreos-23.05    /istoreos-24.10    /main    /master    /openwrt-21.02.3    /openwrt-22.03.4    /openwrt-22.03.5    /openwrt-23.05    /openwrt-24.10    /r3s    /rk35xx-22.03-test-bootloader    /rtl8211fs_fiber
+
+v17.01.2    v17.01.3    v17.01.4    v17.01.5    v17.01.6    v17.01.7    v18.06.0    v18.06.0-rc1    v18.06.0-rc2    v18.06.1    v18.06.2    v18.06.3    v18.06.4    v18.06.5    v18.06.6    v18.06.7    v18.06.8    v18.06.9    v19.07.0    v19.07.0-rc1    v19.07.0-rc2    v19.07.1    v19.07.10    v19.07.2    v19.07.3    v19.07.4    v19.07.5    v19.07.6    v19.07.7    v19.07.8    v19.07.9    v21.02.0    v21.02.0-rc1    v21.02.0-rc2    v21.02.0-rc3    v21.02.0-rc4    v21.02.1    v21.02.2    v21.02.3    v21.02.4    v21.02.5    v21.02.6    v21.02.7    v22.03.0    v22.03.0-rc1    v22.03.0-rc2    v22.03.0-rc3    v22.03.0-rc4    v22.03.0-rc5    v22.03.0-rc6    v22.03.1    v22.03.2    v22.03.3    v22.03.4    v22.03.5    v22.03.6    v22.03.7    v23.05.0    v23.05.0-rc1    v23.05.0-rc2    v23.05.0-rc3    v23.05.0-rc4    v23.05.1    v23.05.2    v23.05.3    v23.05.4    v23.05.5    v24.10.0-rc1    v24.10.0-rc2    v24.10.0-rc3    v24.10.0-rc4    v24.10.0-rc5
+
 ## 感谢
 
 - [Microsoft Azure](https://azure.microsoft.com)
