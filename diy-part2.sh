@@ -61,8 +61,8 @@ sed -i "s/192.168.1.1/$lan_ip/g" package/base-files/files/bin/config_generate
 echo "修改时区"
 sed -i "s/'UTC'/'CST-8'\n   set system.@system[-1].zonename='$utc_name'/g" package/base-files/files/bin/config_generate
 
-echo "修改默认主题"
-sed -i "s/bootstrap/$default_theme/g" feeds/luci/modules/luci-base/root/etc/config/luci
+#echo "修改默认主题"
+#sed -i "s/bootstrap/$default_theme/g" feeds/luci/modules/luci-base/root/etc/config/luci
 
 #if [ $delete_bootstrap ]; then
 #  echo "去除默认bootstrap主题"
@@ -77,9 +77,9 @@ sed -i "s/bootstrap/$default_theme/g" feeds/luci/modules/luci-base/root/etc/conf
 #    [ -d package/luci-theme-argon ] && echo "CONFIG_PACKAGE_luci-theme-argon=y" >> .config 
 #}) 
 # 添加主题argon-设置
-(git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config && {
-    [ -d package/luci-app-argon-config ] && echo "CONFIG_PACKAGE_luci-app-argon-config=y" >> .config 
-})
+#(git clone https://github.com/jerrykuku/luci-app-argon-config.git package/luci-app-argon-config && {
+#    [ -d package/luci-app-argon-config ] && echo "CONFIG_PACKAGE_luci-app-argon-config=y" >> .config 
+#})
 
 # echo '添加OpenClash'
 # git clone $openClash_url package/lean/luci-app-openclash
@@ -88,8 +88,8 @@ sed -i "s/bootstrap/$default_theme/g" feeds/luci/modules/luci-base/root/etc/conf
 # echo 'CONFIG_PACKAGE_luci-app-openclash=n' >>.config
 # echo 'CONFIG_PACKAGE_luci-i18n-openclash-zh-cn=n' >>.config
 
-echo '添加Lienol包'
-git clone $lienol_url package/Lienol
+#echo '添加Lienol包' #？？？？？？？？？？？？？？？？？？？？、
+#git clone $lienol_url package/Lienol
 
 # echo '添加Passwall'
 # echo 'CONFIG_PACKAGE_luci-app-passwall=n' >>.config
