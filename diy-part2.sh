@@ -148,16 +148,16 @@ echo 'CONFIG_PACKAGE_luci-i18n-filebrowser-zh-cn=y' >>.config
 # sed -i 's/"管理权"/"改密码"/g' feeds/luci/modules/luci-base/po/zh-cn/base.po
 # sed -i 's/"带宽监控"/"监视"/g' feeds/luci/applications/luci-app-nlbwmon/po/zh-cn/nlbwmon.po
 
-sed -i 's/"aMule设置"/"电驴下载"/g' `grep "aMule设置" -rl ./`
-sed -i 's/"网络存储"/"NAS"/g' `grep "网络存储" -rl ./`
-sed -i 's/"Turbo ACC 网络加速"/"网络加速"/g' `grep "Turbo ACC 网络加速" -rl ./`
-sed -i 's/"实时流量监测"/"流量"/g' `grep "实时流量监测" -rl ./`
+#sed -i 's/"aMule设置"/"电驴下载"/g' `grep "aMule设置" -rl ./`
+#sed -i 's/"网络存储"/"NAS"/g' `grep "网络存储" -rl ./`
+#sed -i 's/"Turbo ACC 网络加速"/"网络加速"/g' `grep "Turbo ACC 网络加速" -rl ./`
+#sed -i 's/"实时流量监测"/"流量"/g' `grep "实时流量监测" -rl ./`
 # sed -i 's/"KMS 服务器"/"KMS激活"/g' `grep "KMS 服务器" -rl ./`
 # sed -i 's/"TTYD 终端"/"命令窗"/g' `grep "TTYD 终端" -rl ./`
-sed -i 's/"USB 打印服务器"/"打印服务"/g' `grep "USB 打印服务器" -rl ./`
+#sed -i 's/"USB 打印服务器"/"打印服务"/g' `grep "USB 打印服务器" -rl ./`
 # sed -i 's/"Web 管理"/"Web"/g' `grep "Web 管理" -rl ./`
-sed -i 's/"管理权"/"密码设置"/g' `grep "管理权" -rl ./`
-sed -i 's/"带宽监控"/"监控"/g' `grep "带宽监控" -rl ./`
+#sed -i 's/"管理权"/"密码设置"/g' `grep "管理权" -rl ./`
+#sed -i 's/"带宽监控"/"监控"/g' `grep "带宽监控" -rl ./`
 # sed -i 's/"Argon 主题设置"/"Argon设置"/g' `grep "Argon 主题设置" -rl ./`
 
 # 2. 添加公共自定义功能，设备单个的到设备 sh文件中添加
@@ -165,7 +165,7 @@ sed -i 's/"带宽监控"/"监控"/g' `grep "带宽监控" -rl ./`
 #以下选项是定义你需要的功能（y=集成,n=忽略），重新写入到 .config 文件
 ######################################################################
 # $WORK_DIR/trunk 执行在这个目录下
-set -u
+#set -u
 
 # 是否超频(多选一）
 # echo "CONFIG_FIRMWARE_CPU_900MHZ=n" >>.config
@@ -183,26 +183,26 @@ set -u
 # echo "CONFIG_FIRMWARE_INCLUDE_CADDYBIN=n" >>.config # 集成 caddu执行文件，此文件有13M,请注意固件大小。如果不集成，会从网上下载下来执行，不影响正常使用
 
 # 广告
-echo "CONFIG_FIRMWARE_INCLUDE_KOOLPROXY=n" >>.config   # KP 广告过滤
-echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=n" >>.config # ADGUARD 广告拦截
-echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=n" >>.config      # adbyby plus+
+#echo "CONFIG_FIRMWARE_INCLUDE_KOOLPROXY=n" >>.config   # KP 广告过滤
+#echo "CONFIG_FIRMWARE_INCLUDE_ADGUARDHOME=n" >>.config # ADGUARD 广告拦截
+#echo "CONFIG_FIRMWARE_INCLUDE_ADBYBY=n" >>.config      # adbyby plus+
 
 # 代理
-echo "CONFIG_FIRMWARE_INCLUDE_KUMASOCKS=y" >>.config # KUMA
-echo "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >>.config    # SOCKS proxy
-echo "CONFIG_FIRMWARE_INCLUDE_TUNSAFE=n" >>.config   # TUNSAFE
-echo "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >>.config    # srelay
-echo "CONFIG_FIRMWARE_INCLUDE_IPT2SOCKS=n" >>.config # IPT2
+#echo "CONFIG_FIRMWARE_INCLUDE_KUMASOCKS=y" >>.config # KUMA
+#echo "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >>.config    # SOCKS proxy
+#echo "CONFIG_FIRMWARE_INCLUDE_TUNSAFE=n" >>.config   # TUNSAFE
+#echo "CONFIG_FIRMWARE_INCLUDE_SRELAY=n" >>.config    # srelay
+#echo "CONFIG_FIRMWARE_INCLUDE_IPT2SOCKS=n" >>.config # IPT2
 
 # 穿透
-echo "CONFIG_FIRMWARE_INCLUDE_FRPC=n" >>.config    # 内网穿透FRPC
-echo "CONFIG_FIRMWARE_INCLUDE_FRPS=n" >>.config    # 内网穿透FRPS
-echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=n" >>.config # 阿里DDNS
+#echo "CONFIG_FIRMWARE_INCLUDE_FRPC=n" >>.config    # 内网穿透FRPC
+#echo "CONFIG_FIRMWARE_INCLUDE_FRPS=n" >>.config    # 内网穿透FRPS
+#echo "CONFIG_FIRMWARE_INCLUDE_ALIDDNS=n" >>.config # 阿里DDNS
 
 #网易云解锁
-echo "CONFIG_FIRMWARE_INCLUDE_WYY=n" >>.config
+#echo "CONFIG_FIRMWARE_INCLUDE_WYY=n" >>.config
 #网易云解锁GO版本执行文件（4M多）注意固件超大小
-echo "CONFIG_FIRMWARE_INCLUDE_WYYBIN=n" >>.config
+#echo "CONFIG_FIRMWARE_INCLUDE_WYYBIN=n" >>.config
 
 # DNS 有关
 echo "CONFIG_FIRMWARE_INCLUDE_DNSFORWARDER=n" >>.config # DNS-FORWARDER
@@ -210,13 +210,13 @@ echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNS=y" >>.config     # smartdns
 echo "CONFIG_FIRMWARE_INCLUDE_SMARTDNSBIN=y" >>.config  # smartdns二进制文件
 
 # 其他
-echo "CONFIG_FIRMWARE_INCLUDE_MENTOHUST=n" >>.config  # MENTOHUST
-echo "CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT=n" >>.config # SCUTCLIENT
-echo "CONFIG_FIRMWARE_INCLUDE_CADDY=n" >>.config      # 在线文件管理服务
-echo "CONFIG_FIRMWARE_INCLUDE_MENTOHUST=n" >>.config  # MENTOHUST 锐捷认证
-echo "CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT=n" >>.config # SCUT校园网客户端
-echo "CONFIG_FIRMWARE_INCLUDE_CADDYBIN=n" >>.config   # 集成caddu执行文件，此文件有13M,请注意固件大小。如果不集成，会从网上下载下来执行，不影响正常使用
-echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >>.config   # zerotier ~1.3M
+#echo "CONFIG_FIRMWARE_INCLUDE_MENTOHUST=n" >>.config  # MENTOHUST
+#echo "CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT=n" >>.config # SCUTCLIENT
+#echo "CONFIG_FIRMWARE_INCLUDE_CADDY=n" >>.config      # 在线文件管理服务
+#echo "CONFIG_FIRMWARE_INCLUDE_MENTOHUST=n" >>.config  # MENTOHUST 锐捷认证
+#echo "CONFIG_FIRMWARE_INCLUDE_SCUTCLIENT=n" >>.config # SCUT校园网客户端
+#echo "CONFIG_FIRMWARE_INCLUDE_CADDYBIN=n" >>.config   # 集成caddu执行文件，此文件有13M,请注意固件大小。如果不集成，会从网上下载下来执行，不影响正常使用
+#echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >>.config   # zerotier ~1.3M
 
 # 3. 删除预设项
 ################################################################################################
