@@ -61,8 +61,8 @@ sed -i "s/192.168.1.1/$lan_ip/g" package/base-files/files/bin/config_generate
 echo "修改时区"
 sed -i "s/'UTC'/'CST-8'\n   set system.@system[-1].zonename='$utc_name'/g" package/base-files/files/bin/config_generate
 
-#echo "修改默认主题"
-#sed -i "s/bootstrap/$default_theme/g" feeds/luci/modules/luci-base/root/etc/config/luci
+echo "修改默认主题"
+sed -i "s/bootstrap/$default_theme/g" feeds/luci/modules/luci-base/root/etc/config/luci
 
 #if [ $delete_bootstrap ]; then
 #  echo "去除默认bootstrap主题"
