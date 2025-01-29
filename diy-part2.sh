@@ -70,7 +70,7 @@ sed -i "s/'UTC'/'CST-8'\n   set system.@system[-1].zonename='$utc_name'/g" packa
 #  sed -i '/\+luci-theme-bootstrap/d' package/feeds/luci/luci/Makefile
 #  sed -i '/CONFIG_PACKAGE_luci-theme-bootstrap=y/d' .config
 #  sed -i '/set luci.main.mediaurlbase=\/luci-static\/bootstrap/d' feeds/luci/themes/luci-theme-bootstrap/root/etc/uci-defaults/30_luci-theme-bootstrap
-fi
+#fi
 
 #echo '添加主题argon'
 #(git clone https://github.com/jerrykuku/luci-theme-argon.git package/luci-theme-argon && {
