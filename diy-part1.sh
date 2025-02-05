@@ -36,7 +36,7 @@ sed -i '$a src-git printing https://github.com/Vladdrako/openwrt-printing-packag
 #sed -i '$a src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 #sed -i '$a src-git small https://github.com/kenzok8/small' feeds.conf.default
 
-# echo 'src-git fichenx https://github.com/fichenx/openwrt-package' >>feeds.conf.default
+# echo 'src-git fichenx https://github.com/fichenx/openwrt-package' >>feeds.conf.default #带CUPS
 
 #sed -i '1i src-git kenzo https://github.com/kenzok8/openwrt-packages' feeds.conf.default
 #sed -i '2i src-git small https://github.com/kenzok8/small' feeds.conf.default
