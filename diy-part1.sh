@@ -29,6 +29,7 @@ rm -rf tmp
 # sed -i '$a src-git helloworld https://github.com/fw876/helloworld' feeds.conf.default
 #sed -i '$a src-git printing https://github.com/jastheace/openwrt-printing-packages.git' feeds.conf.default # 添加CUPS打印项
 sed -i '$a src-git printing https://github.com/Vladdrako/openwrt-printing-packages.git' feeds.conf.default # 添加CUPS打印项
+wget https://www.openssl.org/source/openssl-1.1.1o.tar.gz
 #sed -i '$a src-git printing https://github.com/FranciscoBorges/openwrt-printing-packages.git' feeds.conf.default # 添加CUPS打印项
 # sed -i '$a src-git passwall https://github.com/xiaorouji/openwrt-passwall' feeds.conf.default
 # echo 'src-git kenzo https://github.com/kenzok8/openwrt-packages' >>feeds.conf.default
