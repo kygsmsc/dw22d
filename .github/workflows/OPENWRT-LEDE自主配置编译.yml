@@ -39,7 +39,13 @@ jobs:
     steps:
     - name: 检查项目分支
       uses: actions/checkout@main
-      
+    - name: 初始化编译环境
+      env:
+        DEBIAN_FRONTEND: noninteractive
+      run: |
+        sudo timedatectl set-timezone "$TZ"
+        sudo mkdir -p /workdir
+        sudo chown $USER:$GROUPS /workdir      
    
     - name: 克隆源代码
       working-directory: /workdir
