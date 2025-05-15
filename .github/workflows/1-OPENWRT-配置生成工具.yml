@@ -20,6 +20,7 @@ on:
           - openwrt-main
           - lede-master
           - immortalwrt-master
+          - immortalwrt-mt798x-master
           - Lienol-master
           - istoreos-master
           
