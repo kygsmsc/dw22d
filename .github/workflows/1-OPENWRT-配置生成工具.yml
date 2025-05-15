@@ -117,6 +117,11 @@ jobs:
             REPO_BRANCH="master"
             #BAN_VERS="${{inputs.banben}}"
             TAGS_NAME="Immortalwrt"
+        elif [[ "${{ inputs.source_branch }}" == *"immortalwrt-mt798x"* ]]; then
+            REPO_URL="https://github.com/hanwckf/immortalwrt-mt798x.git"
+            REPO_BRANCH="master"
+            #BAN_VERS="${{inputs.banben}}"
+            TAGS_NAME="Immortalwrt-mt798x"
         elif [[ "${{ inputs.source_branch }}" == *"Lienol"* ]]; then
             REPO_URL="https://github.com/Lienol/openwrt"
             REPO_BRANCH="main"
