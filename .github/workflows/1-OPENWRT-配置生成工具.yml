@@ -192,7 +192,7 @@ jobs:
                 
     - name: SSH连接 (cd openwrt && make menuconfig )
       if: (inputs.ssh == true) || contains(github.event.action, 'ssh')
-      uses: GabrielBB/x11-novnc-action@v1
+      uses: GabrielBB/x11-vnc-action@v1
     
       with:
           display: ":99"
