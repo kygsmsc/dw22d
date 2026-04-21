@@ -155,13 +155,6 @@ jobs:
         git checkout ${{inputs.banben}}   # 切换到指定的版本
         git branch -a  # 查看当前使用的版本
         
-    #- name: SSH连接 (cd openwrt && make menuconfig )
-      #if: (inputs.ssh == true) || contains(github.event.action, 'ssh')
-      #uses: rdp-studio/ssh2actions@main
-      #env:
-        #TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
-        #TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
-        
     - name: 加载自定义提要
       run: |
         rm -rf tmp
@@ -189,10 +182,21 @@ jobs:
         chmod +x $DIY_P2_SH
         cd openwrt
         $GITHUB_WORKSPACE/$DIY_P2_SH
-        
+
+     #- name: SSH连接 (cd openwrt && make menuconfig )
+      #if: (inputs.ssh == true) || contains(github.event.action, 'ssh')
+      #uses: rdp-studio/ssh2actions@main
+      #env:
+        #TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+        #TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+                
     - name: SSH连接 (cd openwrt && make menuconfig )
       if: (inputs.ssh == true) || contains(github.event.action, 'ssh')
-      uses: mxschmitt/action-tmate@v3
+      uses: GabrielBB/x11-novnc-action@v1
+    
+      with:
+          display: ":99"
+          resolution: "1280x720"
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
