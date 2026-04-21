@@ -192,7 +192,7 @@ jobs:
         
     - name: SSH连接 (cd openwrt && make menuconfig )
       if: (inputs.ssh == true) || contains(github.event.action, 'ssh')
-      uses: rdp-studio/ssh2actions@main
+      uses: datout/debugger-action@main
       env:
         TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
         TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
